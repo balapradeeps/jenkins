@@ -23,9 +23,7 @@ pipeline {
 
         stage('buildFile') {
           steps {
-            sh '''touch hello.txt 
-
-echo "beastmaster" >>hello,txt
+            sh '''ls -la 
 '''
           }
         }
@@ -36,7 +34,11 @@ echo "beastmaster" >>hello,txt
     stage('Deploye') {
       steps {
         echo 'Deliver....'
-        sh '''docker build -t my-small-image .
+        sh '''touch hello.txt
+echo "TommyPB" >>hello.txt
+cat hello.txt 
+
+docker build -t my-small-image .
 
 echo "doing delivery stuff with docker.."
                 '''
