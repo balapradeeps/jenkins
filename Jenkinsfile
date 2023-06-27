@@ -14,7 +14,8 @@ pipeline {
 
         stage('parallel') {
           steps {
-            sh 'ls -ltr'
+            sh '''ls -ltr
+cat Jenkinnsfile'''
           }
         }
 
