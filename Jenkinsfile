@@ -2,40 +2,43 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            echo 'Building..'
-            sh '''
+      steps {
+        echo 'Building..'
+        sh '''
                 echo "doing build stuff.."
                 '''
-          }
-        }
-
-        stage('parallel') {
-          steps {
-            sh '''ls -ltr
-cat Jenkinsfile'''
-          }
-        }
-
       }
     }
 
     stage('Test') {
-      steps {
-        echo 'Testing..'
-        sh '''
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Testing..'
+            sh '''
                 echo "doing test stuff.."
                 '''
+          }
+        }
+
+        stage('buildFile') {
+          steps {
+            sh '''touch hello.txt 
+
+echo "beastmaster" >>hello,txt
+'''
+          }
+        }
+
       }
     }
 
     stage('Deploye') {
       steps {
         echo 'Deliver....'
-        sh '''
-                echo "doing delivery stuff.."
+        sh '''docker build -t my-small-image .
+
+echo "doing delivery stuff with docker.."
                 '''
       }
     }
