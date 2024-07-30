@@ -85,7 +85,7 @@ Copy the password and paste it into the "Administrator password" field in the we
 
 
 
-# For Security reason you want to change the default Jenkins port:
+# For security reasons, if you want to change the default Jenkins port, you can use this after installation:
 
 1. **Open Jenkins Configuration File**:
 
